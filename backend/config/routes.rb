@@ -1,0 +1,12 @@
+Rails.application.routes.draw do
+  namespace :api do 
+    post 'sign_in', to: 'sessions#login'          # Updated from create
+    post 'sign_up', to: 'sessions#sign_up'
+    delete 'destroy', to: 'sessions#destroy'
+    post 'password', to: 'passwords#create'          # Forgot password
+    put 'password', to: 'passwords#update'           # Reset password with token
+    put 'password/change', to: 'passwords#change_password'    # Change password with old password
+    post '/auth/google_signin', to: 'sessions#google_signin'
+    get 'status', to: 'sessions#status'
+  end
+end
