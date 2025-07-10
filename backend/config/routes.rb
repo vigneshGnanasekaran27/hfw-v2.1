@@ -8,5 +8,9 @@ Rails.application.routes.draw do
     put 'password/change', to: 'passwords#change_password'    # Change password with old password
     post '/auth/google_signin', to: 'sessions#google_signin'
     get 'status', to: 'sessions#status'
+
+
+    post 'razorpay/order', to: 'razorpay#order'  # Razorpay order creation
+    post 'razorpay/verify', to: 'razorpay#verify'      # Razorpay payment verification
   end
 end

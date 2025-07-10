@@ -33,7 +33,7 @@ function SignInForm() {
         await signin({ email, password });
         router.push(redirectPath || "/dashboard");
       } catch (err) {
-        // Error handled by AuthContext
+        console.log(err);
       }
     }
   };
@@ -73,7 +73,10 @@ function SignInForm() {
 
       <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Email Address
           </label>
           <input
@@ -86,15 +89,23 @@ function SignInForm() {
             } focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-purple-500 transition`}
             placeholder="Enter your email"
           />
-          {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-500">{errors.email}</p>
+          )}
         </div>
 
         <div>
           <div className="flex items-center justify-between mb-1">
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
               Password
             </label>
-            <Link href="/auth/forgot_password" className="text-sm text-green-600 hover:text-green-800">
+            <Link
+              href="/auth/forgot_password"
+              className="text-sm text-green-600 hover:text-green-800"
+            >
               Forgot password?
             </Link>
           </div>
@@ -117,7 +128,9 @@ function SignInForm() {
               {showPassword ? "Hide" : "Show"}
             </button>
           </div>
-          {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
+          {errors.password && (
+            <p className="mt-1 text-sm text-red-500">{errors.password}</p>
+          )}
         </div>
 
         <button
@@ -132,7 +145,9 @@ function SignInForm() {
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Or continue with</span>
+            <span className="px-2 bg-white text-gray-500">
+              Or continue with
+            </span>
           </div>
         </div>
 
@@ -144,7 +159,9 @@ function SignInForm() {
             <Link
               href={
                 redirectPath
-                  ? `/auth/signup?redirect=${encodeURIComponent(redirectPath)}&programTitle=${encodeURIComponent(programTitle || "")}`
+                  ? `/auth/signup?redirect=${encodeURIComponent(
+                      redirectPath
+                    )}&programTitle=${encodeURIComponent(programTitle || "")}`
                   : "/auth/signup"
               }
               className="text-purple-600 hover:text-purple-800 font-medium"
@@ -162,7 +179,10 @@ function SignInForm() {
             Terms of Service
           </Link>{" "}
           and{" "}
-          <Link href="/privacy" className="text-purple-600 hover:text-purple-800">
+          <Link
+            href="/privacy"
+            className="text-purple-600 hover:text-purple-800"
+          >
             Privacy Policy
           </Link>
         </p>
@@ -199,8 +219,12 @@ export default function SignInPage() {
       <div className="hidden md:block bg-purple-700 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('/assets/pattern.svg')] opacity-10"></div>
         <div className="flex flex-col justify-center h-full px-12 relative z-10">
-          <h1 className="text-4xl font-light text-white mb-6">Welcome to our platform</h1>
-          <p className="text-purple-200 text-lg mb-8">Sign in to access your personalized dashboard</p>
+          <h1 className="text-4xl font-light text-white mb-6">
+            Welcome to our platform
+          </h1>
+          <p className="text-purple-200 text-lg mb-8">
+            Sign in to access your personalized dashboard
+          </p>
           <div className="flex items-center space-x-3 text-purple-200">
             <div className="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center">
               <svg

@@ -50,3 +50,4 @@ gem 'dotenv-rails'
 gem 'resend'   
 
 gem 'google-id-token'
+gem 'razorpay'

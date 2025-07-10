@@ -4,8 +4,10 @@ import Bginner_friendly from "..//images/WorkoutSchedule/beginner_friendly.png";
 import High_intensity from "..//images/WorkoutSchedule/high_intensity.png";
 import Strength_training from "..//images/WorkoutSchedule/strength_training.png";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const WorkoutSchedulesSection = () => {
+  const route = useRouter()
   const workoutPrograms = [
     {
       id: "beginner",
@@ -21,6 +23,7 @@ const WorkoutSchedulesSection = () => {
         "Proper form guidance",
         "Flexibility work",
       ],
+      url: "https://docs.google.com/document/d/1e-zT-6hDZwiHSWQfMF9trffFg7c4ra_q8XQgFwAtbXk/edit?tab=t.0"
     },
     {
       id: "strength",
@@ -36,6 +39,7 @@ const WorkoutSchedulesSection = () => {
         "Recovery protocols",
         "Nutrition guidance",
       ],
+      url: "https://docs.google.com/document/d/1e-zT-6hDZwiHSWQfMF9trffFg7c4ra_q8XQgFwAtbXk/edit?tab=t.0"
     },
     {
       id: "hiit",
@@ -51,8 +55,16 @@ const WorkoutSchedulesSection = () => {
         "Circuit workouts",
         "Active recovery",
       ],
+      url: "https://docs.google.com/document/d/1e-zT-6hDZwiHSWQfMF9trffFg7c4ra_q8XQgFwAtbXk/edit?tab=t.0"
     },
   ];
+
+
+
+  const handlenavigate = ( url)=>{
+    route.push(url)
+
+  }
 
   return (
     <div id="schedule" className="py-16 mt-28">
@@ -118,9 +130,10 @@ const WorkoutSchedulesSection = () => {
                   ))}
                 </div>
 
-                <button
+                <button 
                   className="px-4 py-2 bg-white text-green-700 rounded-lg border border-green-200 flex items-center justify-center gap-2 hover:bg-green-50 transition-colors shadow-sm
               dark:bg-black dark:text-green-300 dark:border-green-800 dark:hover:bg-gray-900"
+              onClick={()=> handlenavigate(program.url)}
                 >
                   View Program Details
                   <ArrowRight className="w-4 h-4 ml-2" />
