@@ -51,3 +51,4 @@ gem 'resend'
 
 gem 'google-id-token'
 gem 'razorpay'
+gem 'firebase_id_token'

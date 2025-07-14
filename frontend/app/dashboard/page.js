@@ -22,6 +22,7 @@ import HomeOverview from "@/dashboard/user/HomeOverview";
 import AdminHomeOverview from "@/dashboard/admin/AdminHomeOverview";
 import AdminTrainingDashboard from "@/dashboard/admin/AdminTrainingDashboard";
 import AdminKitchenDashboard from "@/dashboard/admin/AdminKitchenDashboard";
+import AdminEventsDashboard from "@/dashboard/admin/AdminEventsDashboard";
 
 const DashboardLayout = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -61,10 +62,12 @@ const DashboardLayout = () => {
     { id: "training", name: "Training", icon: Dumbbell },
     { id: "kitchen", name: "Kitchen", icon: ChefHat },
     { id: "shop", name: "Shop", icon: ShoppingBag },
+    { id: "event-payments", name: "Event Payments", icon: FileText },
   ];
 
   const adminModules = [
     ...userModules,
+    { id: "events", name: "Events", icon: FileText },
     { id: "users", name: "User Management", icon: Users },
     { id: "reports", name: "Reports", icon: FileText },
     { id: "settings", name: "Settings", icon: Settings },
@@ -91,6 +94,8 @@ const DashboardLayout = () => {
     </div>
   );
 
+  const UserEventsPayments =
+    require("@/dashboard/user/UserEventsPayments").default;
   const renderContent = () => {
     switch (activeModule) {
       case "home":
@@ -107,6 +112,10 @@ const DashboardLayout = () => {
         ) : (
           <KitchenDashboard />
         );
+      case "events":
+        return hasRole("admin") ? <AdminEventsDashboard /> : <AccessDenied />;
+      case "event-payments":
+        return <UserEventsPayments />;
       case "users":
         return hasRole("admin") ? <div>User Management</div> : <AccessDenied />;
       case "reports":
@@ -180,9 +189,7 @@ const DashboardLayout = () => {
           }`}
         >
           <LogOut size={20} />
-          <span className={`${isSidebarOpen ? "ml-4" : "hidden"}`}>
-            Logout
-          </span>
+          <span className={`${isSidebarOpen ? "ml-4" : "hidden"}`}>Logout</span>
         </button>
       </div>
 

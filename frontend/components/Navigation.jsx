@@ -4,6 +4,9 @@ import AnimatedHamburgerMenu from "./AnimatedHamburgerMenu";
 import Image from "next/legacy/image";
 import { useRouter } from "next/navigation";
 import logo from "../images/logo.png";
+
+import NotificationHub from "./NotificationHub";
+
 import {
   ChevronRight,
   Home,
@@ -142,6 +145,9 @@ const Navigation = () => {
               setShowMore={setShowMore}
               moreButtonRef={moreButtonRef}
             />
+          </div>
+          <div>
+            <NotificationHub />
           </div>
 
           {/* Auth Buttons and Mobile Menu Toggle */}

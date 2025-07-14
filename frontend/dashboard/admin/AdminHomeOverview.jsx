@@ -2,32 +2,75 @@ import React from "react";
 import { Users, TrendingUp, ShoppingCart, AlertCircle } from "lucide-react";
 
 const AdminHomeOverview = () => {
-  const stats = [
+  const [stats, setStats] = React.useState([
     {
       title: "Total Users",
-      value: "1,234",
+      value: "...",
       icon: Users,
       color: "text-blue-500",
     },
     {
-      title: "Active Programs",
-      value: "56",
+      title: "Active Events",
+      value: "...",
       icon: TrendingUp,
       color: "text-green-500",
     },
     {
-      title: "Orders",
-      value: "89",
+      title: "Event Bookings",
+      value: "...",
       icon: ShoppingCart,
       color: "text-purple-500",
     },
     {
-      title: "Support Tickets",
-      value: "12",
+      title: "Upcoming Events",
+      value: "...",
       icon: AlertCircle,
       color: "text-orange-500",
     },
-  ];
+  ]);
+
+  React.useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const [users, events, payments] = await Promise.all([
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/users/count`).then(r => r.json()),
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/events/stats`).then(r => r.json()),
+          fetch(`${process.env.NEXT_PUBLIC_API_BASE}/admin/payments/stats`).then(r => r.json()),
+        ]);
+
+        setStats([
+          {
+            title: "Total Users",
+            value: users.count.toLocaleString(),
+            icon: Users,
+            color: "text-blue-500",
+          },
+          {
+            title: "Active Events",
+            value: events.active.toLocaleString(),
+            icon: TrendingUp,
+            color: "text-green-500",
+          },
+          {
+            title: "Event Bookings",
+            value: payments.total.toLocaleString(),
+            icon: ShoppingCart,
+            color: "text-purple-500",
+          },
+          {
+            title: "Upcoming Events",
+            value: events.upcoming.toLocaleString(),
+            icon: AlertCircle,
+            color: "text-orange-500",
+          },
+        ]);
+      } catch (error) {
+        console.error('Failed to fetch stats:', error);
+      }
+    };
+
+    fetchStats();
+  }, []);
 
   return (
     <div className="space-y-6 p-6">

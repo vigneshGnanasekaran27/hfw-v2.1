@@ -68,4 +68,7 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+  # Allow ngrok domain for webhook testing
+  # config.hosts << "ccde84b0099b.ngrok-free.app"
+  config.hosts << "e7c8e5f084b1.ngrok-free.app"
 end

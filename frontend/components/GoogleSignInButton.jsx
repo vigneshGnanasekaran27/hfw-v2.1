@@ -15,6 +15,7 @@ function GoogleSignInButton({ className }) {
         ux_mode: "redirect",
         login_uri: "http://localhost:3000/api/auth/google_signin",
         auto_prompt: false,
+        // No dynamic redirect_url in login_uri
       });
       window.google.accounts.id.renderButton(
         document.getElementById("google-signin-button"),
@@ -27,6 +28,16 @@ function GoogleSignInButton({ className }) {
           logo_alignment: "left",
         }
       );
+
+      // Attach click handler to store redirect path before login
+      const btn = document.getElementById("google-signin-button");
+      if (btn) {
+        btn.addEventListener("click", () => {
+          if (typeof window !== "undefined") {
+            localStorage.setItem("postLoginRedirect", window.location.href);
+          }
+        });
+      }
     };
 
     return () => {

@@ -5,11 +5,13 @@ import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Home from "@/components/Home";
 import ConstructionBanner from "@/components/ConstructionBanner";
 import { AuthProvider } from "@/context/AuthContext";
+import PostLoginRedirector from "@/components/PostLoginRedirector";
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <AuthProvider>
+          <PostLoginRedirector />
           <div>
             <Home />
             <WhatsAppChatButton

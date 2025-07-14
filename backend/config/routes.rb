@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+
+  post '/webhooks/razorpay', to: 'webhooks#razorpay'
   namespace :api do 
+    resources :events
+    resources :payments, only: [:index] do
+      collection do
+        get :user, to: "payments#user_payments"
+      end
+    end
+    post "/razorpay/webhook", to: "razorpay_webhook#create"
     post 'sign_in', to: 'sessions#login'          # Updated from create
     post 'sign_up', to: 'sessions#sign_up'
     delete 'destroy', to: 'sessions#destroy'
@@ -12,5 +21,11 @@ Rails.application.routes.draw do
 
     post 'razorpay/order', to: 'razorpay#order'  # Razorpay order creation
     post 'razorpay/verify', to: 'razorpay#verify'      # Razorpay payment verification
+
+    post 'firebase_auth/verify', to: 'firebase_auth#verify'
+
+    # post '/webhooks/razorpay', to: 'webhooks#razorpay'
+
   end
-end
+  
+end 

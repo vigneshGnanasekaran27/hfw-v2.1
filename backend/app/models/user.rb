@@ -1,5 +1,7 @@
+
 class User < ApplicationRecord
   include Clearance::User
+  has_many :payments
 
   before_save :downcase_email
   validates :email, presence: true, uniqueness: true
