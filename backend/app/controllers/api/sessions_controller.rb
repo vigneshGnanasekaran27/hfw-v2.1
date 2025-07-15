@@ -3,6 +3,7 @@ require 'google-id-token'
 
 module Api
   class SessionsController < ApplicationController
+    skip_forgery_protection
 
     def login # Note: You renamed this from sign_in
       user = User.find_by(email: params[:email]&.downcase)
