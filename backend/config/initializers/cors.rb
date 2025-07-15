@@ -7,9 +7,9 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins "https://www.hopefitwellness.com", "http://192.168.10.210:3001"
+    origins "https://www.hopefitwellness.com"
 
-    resource '*',
+    resource '/api/*',
              headers: :any,
              methods: %i[get post patch put delete options],
              credentials: true
