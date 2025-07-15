@@ -6,6 +6,7 @@ const API_BASE_URL = "https://hfw-v2-1-backend.onrender.com/api/"; // Update to 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
   withCredentials: true,
+  credentials: "include",
   headers: {
     "Content-Type": "application/json",
   },
@@ -82,6 +83,7 @@ export const authService = {
   async checkSession() {
     try {
       const response = await axiosInstance.get("/status"); // Match controller's `status`
+      console.log("Still logged in", response.data.user);
       return response.data;
     } catch (error) {
       const errorMsg = error.response?.data?.error || "Session check failed";
