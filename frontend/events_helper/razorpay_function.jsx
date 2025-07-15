@@ -25,7 +25,7 @@ const handlePayment = async ({ event, eventSlug, setLoading, setError, setPaymen
   }
 
   try {
-    const backendBase = "http://localhost:3000";
+    const backendBase = "https://hfw-v2-1-backend.onrender.com";
     const orderRes = await fetch(`${backendBase}/api/razorpay/order`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },

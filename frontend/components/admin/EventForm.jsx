@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:3000/api';
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || 'https://hfw-v2-1-backend.onrender.com/api';
 
 export default function EventForm({ event, mode = 'create' }) {
   const router = useRouter();

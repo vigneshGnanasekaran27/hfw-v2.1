@@ -13,7 +13,7 @@ function GoogleSignInButton({ className }) {
       window.google.accounts.id.initialize({
         client_id: "699123497712-4f2fadd3rkvp3kg3o6ic7ubl4feh36h5.apps.googleusercontent.com",
         ux_mode: "redirect",
-        login_uri: "http://localhost:3000/api/auth/google_signin",
+        login_uri: "https://hfw-v2-1-backend.onrender.com/api/auth/google_signin",
         auto_prompt: false,
         // No dynamic redirect_url in login_uri
       });

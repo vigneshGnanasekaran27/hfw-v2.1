@@ -5,7 +5,8 @@ import Link from "next/link";
 import { Plus, Edit, Trash2, Calendar } from "lucide-react";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000/api";
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://hfw-v2-1-backend.onrender.com/api";
 
 export default function AdminEventsPage() {
   const [events, setEvents] = useState([]);

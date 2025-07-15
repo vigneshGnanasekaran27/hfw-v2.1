@@ -94,7 +94,7 @@ export default function PhoneAuthPage() {
 
         // ✅ Send to backend
         const res = await fetch(
-          "http://localhost:3000/api/firebase_auth/verify",
+          "https://hfw-v2-1-backend.onrender.com/api/firebase_auth/verify",
           {
             method: "POST",
             headers: {

@@ -2,7 +2,8 @@
 import React, { useEffect, useState } from "react";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000/api";
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://hfw-v2-1-backend.onrender.com/api";
 
 export default function EventsPage() {
   const [events, setEvents] = useState([]);

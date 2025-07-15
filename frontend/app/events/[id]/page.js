@@ -7,7 +7,8 @@ import GoogleSignInButton from "@/components/GoogleSignInButton";
 import { useAuth } from "@/context/AuthContext";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000/api";
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://hfw-v2-1-backend.onrender.com/api";
 
 export default function EventDetailPage() {
   const params = useParams();

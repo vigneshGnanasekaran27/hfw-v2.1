@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000/api";
+const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "https://hfw-v2-1-backend.onrender.com/api";
 
 export default function UserPaymentsTable() {
   const [payments, setPayments] = useState([]);

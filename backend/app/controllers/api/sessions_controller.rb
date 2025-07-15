@@ -52,7 +52,7 @@ module Api
       credential = params[:credential]
       unless credential
         Rails.logger.error('No credential provided')
-        redirect_to "http://localhost:3001/auth/signin?error=No%20token%20provided"
+        redirect_to "https://www.hopefitwellness.com/auth/signin?error=No%20token%20provided"
         return
       end
 
@@ -63,10 +63,10 @@ module Api
         Rails.logger.info("Token verified locally: #{payload['email']}")
         user = process_google_user(payload)
         sign_in(user)
-        redirect_to "http://localhost:3001/dashboard"
+        redirect_to "https://www.hopefitwellness.com/dashboard"
       rescue GoogleIDToken::ValidationError => e
         Rails.logger.error("Token verification failed: #{e.message}")
-        redirect_to "http://localhost:3001/auth/signin?error=Invalid%20Google%20token"
+        redirect_to "https://www.hopefitwellness.com/auth/signin?error=Invalid%20Google%20token"
       end
     end
 

@@ -1,7 +1,7 @@
 // services/authService.js
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:3000/api/"; // Update to HTTPS in production
+const API_BASE_URL = "https://hfw-v2-1-backend.onrender.com/api/"; // Update to HTTPS in production
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -17,7 +17,10 @@ export const authService = {
       const response = await axiosInstance.post("/sign_up", credentials);
       return response.data;
     } catch (error) {
-      const errorMsg = error.response?.data?.errors || error.response?.data?.error || "Signup failed";
+      const errorMsg =
+        error.response?.data?.errors ||
+        error.response?.data?.error ||
+        "Signup failed";
       throw new Error(Array.isArray(errorMsg) ? errorMsg.join(", ") : errorMsg);
     }
   },
@@ -44,7 +47,10 @@ export const authService = {
 
   async changePassword(passwordData) {
     try {
-      const response = await axiosInstance.put("/password/change", passwordData); // Align with Clearance
+      const response = await axiosInstance.put(
+        "/password/change",
+        passwordData
+      ); // Align with Clearance
       return response.data;
     } catch (error) {
       const errorMsg = error.response?.data?.error || "Password change failed";
@@ -57,7 +63,8 @@ export const authService = {
       const response = await axiosInstance.post("/password", { email }); // Clearance default
       return response.data;
     } catch (error) {
-      const errorMsg = error.response?.data?.error || "Failed to send reset instructions";
+      const errorMsg =
+        error.response?.data?.error || "Failed to send reset instructions";
       throw new Error(errorMsg);
     }
   },

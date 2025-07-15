@@ -5,7 +5,8 @@ import { useParams } from "next/navigation";
 import EventForm from "@/components/admin/EventForm";
 
 const API_BASE =
-  process.env.NEXT_PUBLIC_API_BASE || "http://localhost:3000/api";
+  process.env.NEXT_PUBLIC_API_BASE ||
+  "https://hfw-v2-1-backend.onrender.com/api";
 
 export default function EditEventPage() {
   const params = useParams();
